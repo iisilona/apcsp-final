@@ -1,30 +1,22 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
 struct planner
 {
-  char aname;
-  char aclass;
-  char adue;
-  char adesc;
+  char aname[200];
+  char aclass[200];
+  char adue[200];
+  char adesc[400];
 };
 
-void printit(struct planner *ptr)
+void create(char title[200])
 {
-  printf("%s", ptr->aclass);
-  printf(" : %s\n", ptr->aname);
-  printf("Due %s\n", ptr->adue);
-  printf("%s", ptr->adesc);
-}
-
-void create(char* title)
-{
-  char * extent = ".txt";
-  char filetitle = ((strlen(title))+(strlen(extent))+1);
-  char filecontents;
+ char extent[] = ".txt";
+ char * filename;
   
  struct planner plans;
- char input [200];
+ char input [400];
 
  printf("Enter the assignment name:\n");
  fgets(input, 200, stdin);
@@ -39,12 +31,15 @@ void create(char* title)
  sscanf(input,"%s", plans.adue);
 
  printf("Enter a description for the assignment:\n");
- fgets(input, 200, stdin);
+ fgets(input, 400, stdin);
  sscanf(input,"%s", plans.adesc);
 
  FILE * fyle;
- snprintf(filetitle, sizeof(filetitle), "%s%s", title, extent );
- fyle = fopen(filetitle, "w");
+
+ strcpy(filename, title);
+ strcat(filename, extent);
+  
+ fyle = fopen(filename, "w");
  fwrite(&plans, sizeof(struct planner), 4, fyle);
 
  if(fwrite != 0)  
@@ -55,57 +50,58 @@ void create(char* title)
  fclose (fyle); 
 }
 
-void access(char* title)
+void access(char * title)
 {
-  char * extent = ".txt";
-  char filetitle = ((strlen(title))+(strlen(extent))+1);
-  char filecontents;
+  char extent[] = ".txt";
+  char * filename;
+  
+  strcpy(filename, title);
+  strcat(filename, extent);
   
   FILE * fyle;
-  snprintf(filetitle, sizeof(filetitle), "%s%s", title, extent );
-  fyle = fopen(filetitle, "r");
+  fyle = fopen(filename, "r");
   if (title == NULL) 
     { 
         fprintf(stderr, "\nThat assignment doesn't exist. Sending you back...\n"); 
         exit (1); 
     }
-  filecontents = fgetc(fyle);
-  while (filecontents != EOF)
+  filename = fgetc(fyle);
+  while (filename != EOF)
    {
-     printf("%c", filecontents);
-     filecontents = fgetc(fyle);
-   fclose (fyle);
+     printf("%s", filename);
+     filename = fgetc(fyle);
    }
+   fclose (fyle);
 }
 
 int main ()
 {
   char input[200];
-  char request;
-  char assignments = "Assignments";
-  char add = "Add";
-  char nameof; //name of existing assignment//
-  char name; //initializes new assignment name//
+  char request[200];
+  char assignments[] = "Assignments";
+  char add[] = "Add";
+  char nameof[200]; //name of existing assignment//
+  char name[200]; //initializes new assignment name//
   
   while (1)
   {
    printf("Welcome to your Pi Planner. To access your assignments, type 'Assignments'. To add a new assignment, type 'Add':\n");
-     fgets(input, 50, stdin);
+     fgets(input, 200, stdin);
      sscanf(input,"%s", request);
 
-      if((strcmp(request, assignments))==0)
+      if(strcmp(request, assignments))
       {
          printf("Ah, so you want to access an assignment? OK, enter the assignment name: \n");
-         fgets(input, 50, stdin);
+         fgets(input, 200, stdin);
          sscanf(input, "%s", nameof);
          access(nameof);
          break;
       }
 
-      else if((strcmp(request, add))==0)
+      else if(strcmp(request, add))
        {
          printf("Ah, so you want to create an assignment? OK,  give the assignment a name: \n");
-         fgets(input, 50, stdin);
+         fgets(input, 200, stdin);
          sscanf(input, "%s", name);
          create(name);
          break;
