@@ -80,8 +80,6 @@ int main ()
 {
   char input[200];
   char request[200];
-  char assignments[] = "Assignments";
-  char add[] = "Add";
   char nameof[200]; //name of existing assignment//
   char name[200]; //initializes new assignment name//
   
@@ -91,20 +89,20 @@ int main ()
      fgets(input, 200, stdin);
      sscanf(input,"%s", request);
 
-      if(strcmp(request, add))
+      if(strcmp(request, "Add"))
       {
-         printf("Ah, so you want to access an assignment? OK, enter the assignment name: \n");
+        printf("Ah, so you want to access an assignment? OK,  what's its name?: \n");
          fgets(input, 200, stdin);
-         sscanf(input, "%s", nameof);
+         sscanf(input, "%s", name);
          access(nameof);
          break;
       }
 
-      else if(strcmp(request, assignments))
+      else if (strcmp(request, "Assignments"))
        {
-         printf("Ah, so you want to create an assignment? OK,  give the assignment a name: \n");
+          printf("Ah, so you want to create an assignment? OK, enter the assignment name: \n");
          fgets(input, 200, stdin);
-         sscanf(input, "%s", name);
+         sscanf(input, "%s", nameof);
          create(name);
          break;
        }
