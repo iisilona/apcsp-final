@@ -12,11 +12,11 @@ struct planner
 
 void create(char title[200])
 {
- char extent[] = ".txt";
+ char * extent = ".txt";
  char * filename;
   
  struct planner plans;
- char input [400];
+ char input[200];
 
  printf("Enter the assignment name:\n");
  fgets(input, 200, stdin);
@@ -52,8 +52,9 @@ void create(char title[200])
 
 void access(char * title)
 {
-  char extent[] = ".txt";
+  char * extent = ".txt";
   char * filename;
+  char * accessing;
   
   strcpy(filename, title);
   strcat(filename, extent);
@@ -65,11 +66,12 @@ void access(char * title)
         fprintf(stderr, "\nThat assignment doesn't exist. Sending you back...\n"); 
         exit (1); 
     }
-  filename = fgetc(fyle);
-  while (filename != EOF)
+
+  accessing = fgetc(fyle);
+  while (accessing != EOF)
    {
-     printf("%s", filename);
-     filename = fgetc(fyle);
+     printf("%s", accessing);
+     accessing = fgetc(fyle);
    }
    fclose (fyle);
 }
@@ -89,7 +91,7 @@ int main ()
      fgets(input, 200, stdin);
      sscanf(input,"%s", request);
 
-      if(strcmp(request, assignments))
+      if(strcmp(request, add))
       {
          printf("Ah, so you want to access an assignment? OK, enter the assignment name: \n");
          fgets(input, 200, stdin);
@@ -98,7 +100,7 @@ int main ()
          break;
       }
 
-      else if(strcmp(request, add))
+      else if(strcmp(request, assignments))
        {
          printf("Ah, so you want to create an assignment? OK,  give the assignment a name: \n");
          fgets(input, 200, stdin);
