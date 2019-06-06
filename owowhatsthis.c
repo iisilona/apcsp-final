@@ -69,7 +69,7 @@ void access(char* title)
         fprintf(stderr, "\nThat assignment doesn't exist. Sending you back...\n"); 
         exit (1); 
     }
-  filecontents = fget(fyle);
+  filecontents = fgetc(fyle);
   while (filecontents != EOF)
    {
      printf("%c", filecontents);
