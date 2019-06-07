@@ -12,8 +12,8 @@ struct planner
 
 void create(char title[200])
 {
- char * extent = ".txt";
- char * filename;
+ char extent[] = ".txt";
+ char filename[200];
   
  struct planner plans;
  char input[200];
@@ -50,30 +50,30 @@ void create(char title[200])
  fclose (fyle); 
 }
 
-void access(char * title)
+void access(char title[200])
 {
-  char * extent = ".txt";
-  char * filename;
+  char extent[] = ".txt";
+  char filename[200];
   char * accessing;
   
   strcpy(filename, title);
   strcat(filename, extent);
   
+  int c;
   FILE * fyle;
   fyle = fopen(filename, "r");
-  if (title == NULL) 
+  if (filename == NULL) 
     { 
         fprintf(stderr, "\nThat assignment doesn't exist. Sending you back...\n"); 
         exit (1); 
     }
-
-  accessing = fgetc(fyle);
-  while (accessing != EOF)
+  fyle = fgetc(fyle);
+  while ((c = getc(fyle)) != EOF)
    {
-     printf("%s", accessing);
-     accessing = fgetc(fyle);
+     putchar(c);
    }
    fclose (fyle);
+   exit;
 }
 
 int main ()
