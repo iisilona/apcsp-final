@@ -18,9 +18,9 @@ int main ()
   char input2[200];
   char input3[200];
   char input4[200];
-  char input5[200]
+  char input5[200];
   char input6[200];
-  char input7[200]
+  char input7[200];
   char request[200];
   char nameof[200]; //name of existing assignment//
   char name[200]; //initializes new assignment name//
