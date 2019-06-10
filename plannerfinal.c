@@ -15,6 +15,12 @@ struct planner
 int main ()
 {
   char input[200];
+  char input2[200];
+  char input3[200];
+  char input4[200];
+  char input5[200]
+  char input6[200];
+  char input7[200]
   char request[200];
   char nameof[200]; //name of existing assignment//
   char name[200]; //initializes new assignment name//
@@ -33,8 +39,8 @@ int main ()
       if(strcmp(request, "Add"))
       {
         printf("Ah, so you want to access an assignment? OK,  what's its name?: \n");
-         fgets(input, 200, stdin);
-         sscanf(input, "%s", name);
+         fgets(input2, 200, stdin);
+         sscanf(input2, "%s", name);
          
          strcpy(filename, name);
          strcat(filename, extent);
@@ -65,26 +71,25 @@ int main ()
        else if (strcmp(request, "Assignments"))
        {
          printf("Ah, so you want to create an assignment? OK, give the file a title: \n");
-         fgets(input, 200, stdin);
-         sscanf(input, "%s", nameof);
+         fgets(input3, 200, stdin);
+         sscanf(input3, "%s", nameof);
          struct planner plans;
-         char input[200];
 
          printf("Enter the assignment name:\n");
-         fgets(input, 200, stdin);
-         sscanf(input,"%[^\n]%*c", plans.aname);
+         fgets(input4, 200, stdin);
+         sscanf(input4,"%[^\n]%*c", plans.aname);
 
          printf("Enter the class for the assignment:\n");
-         fgets(input, 200, stdin);
-         sscanf(input,"%[^\n]%*c", plans.aclass);
+         fgets(input5, 200, stdin);
+         sscanf(input5,"%[^\n]%*c", plans.aclass);
 
          printf("Enter the due date:\n");
-         fgets(input, 200, stdin);
-         sscanf(input,"%[^\n]%*c", plans.adue);
+         fgets(input6, 200, stdin);
+         sscanf(input6,"%[^\n]%*c", plans.adue);
 
          printf("Enter a description for the assignment:\n");
-         fgets(input, 400, stdin);
-         sscanf(input,"%[^\n]%*c", plans.adesc);
+         fgets(input7, 400, stdin);
+         sscanf(input7,"%[^\n]%*c", plans.adesc);
 
          FILE * fyle;
 
