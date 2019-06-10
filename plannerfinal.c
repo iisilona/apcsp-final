@@ -72,15 +72,15 @@ int main ()
 
          printf("Enter the assignment name:\n");
          fgets(input, 200, stdin);
-         sscanf(input,"%s", plans.aname);
+         sscanf(input,"%[^\n]%*c", plans.aname);
 
          printf("Enter the class for the assignment:\n");
          fgets(input, 200, stdin);
-         sscanf(input,"%s", plans.aclass);
+         sscanf(input,"%[^\n]%*c", plans.aclass);
 
          printf("Enter the due date:\n");
          fgets(input, 200, stdin);
-         sscanf(input,"%s", plans.adue);
+         sscanf(input,"%[^\n]%*c", plans.adue);
 
          printf("Enter a description for the assignment:\n");
          fgets(input, 400, stdin);
