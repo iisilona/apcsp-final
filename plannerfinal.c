@@ -31,7 +31,7 @@ int main ()
      fgets(input, 200, stdin);
      sscanf(input,"%s", request);
 
-      if(strcmp(request, "Assignemnts") == 0)
+      if(strcmp(request, "Assignments") == 0)
       {
         printf("Ah, so you want to access an assignment? OK,  what's its name?: \n");
          fgets(input, 200, stdin);
@@ -117,3 +117,4 @@ int main ()
  printf("That wasn't a recognizable request. Please try again...\n");
  }
 }
+
